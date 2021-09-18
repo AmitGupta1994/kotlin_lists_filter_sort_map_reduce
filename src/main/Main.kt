@@ -51,6 +51,11 @@ fun main(args: Array<String>) {
      */
     mapUsingMapPredicate(companyList)
 
+    /**
+     * Reduce :
+     *  -
+     */
+    reduceUsingReducePredicate(companyList)
 }
 
 fun printListUsingForLoop(list: MutableList<Any>) {
@@ -179,3 +184,17 @@ fun mapUsingMapPredicate(companyList: MutableList<Company>) {
 
 }
 
+fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
+    //1. total years for all companies i.e sum of age of all companies
+    val sum = companyList.sumBy {
+        if (it.endYear == null) {
+            2021 - it.startYear
+        } else {
+            it.endYear - it.startYear
+
+        }
+    }
+
+    println("------------------------------- total years for all companies i.e sum of age of all companies ---------------------------")
+    println(sum)
+}
