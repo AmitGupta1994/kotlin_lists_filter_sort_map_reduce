@@ -21,23 +21,33 @@ fun main(args: Array<String>) {
 
     // print Company List using For Loop
     println("------------------------------- printListUsingForLoop ---------------------------")
-    printListUsingForLoop(companyList)
+    printListUsingForLoop(companyList.toMutableList())
 
     // print Company List using For Each Loop
     println("------------------------------- printListUsingForEachLoop ---------------------------")
-    printListUsingForEachLoop(companyList)
+    printListUsingForEachLoop(companyList.toMutableList())
 
     /**
-     * Filter : Remember Filter gives us a New List. (I mean the same List should not be manipulated/altered)
+     * Filter :
+     *  - gives a list of data based on a criteria
+     *  - the size of filteredList may or may not be equal to the original list.
      */
     // Filter Using Loop
     filterUsingLoop(companyList)
 
     // Filter Using Filter Predicate
     filterUsingFilterPredicate(companyList)
+
+    /**
+     * Sort :
+     *  - orders the data based on a criteria
+     *  - the size of sortedList is always equal to original list
+     */
+    sortUsingSortPredicate(companyList)
+
 }
 
-fun printListUsingForLoop(list: MutableList<Company>) {
+fun printListUsingForLoop(list: MutableList<Any>) {
 
     for (i in 0 until list.size) {
         println(list[i])
@@ -45,7 +55,7 @@ fun printListUsingForLoop(list: MutableList<Company>) {
     print("\n")
 }
 
-fun printListUsingForEachLoop(list: MutableList<Company>) {
+fun printListUsingForEachLoop(list: MutableList<Any>) {
 
     /**
      * Approach :
@@ -75,20 +85,20 @@ fun filterUsingLoop(companyList: MutableList<Company>) {
 
     // print the list
     println("------------------------------- Filter Technology Company List Using Loop ---------------------------")
-    printListUsingForEachLoop(technologyCompanyList)
+    printListUsingForEachLoop(technologyCompanyList.toMutableList())
 
     // Q2. Filter List of Companies, which started after 1994 (i.e >1994)
     val companyAfter1994List = mutableListOf<Company>()
 
     // Add the filtered data to New List
     companyList.forEach { company ->
-        if (company.startYear > 1994)
+        if (company.startYear != null && company.startYear > 1994)
             companyAfter1994List.add(company)
     }
 
     // print the list
     println("------------------------------- Filter Company List After 1994 Using Loop ---------------------------")
-    printListUsingForEachLoop(companyAfter1994List)
+    printListUsingForEachLoop(companyAfter1994List.toMutableList())
 
 }
 
@@ -99,15 +109,35 @@ fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
     }
     // print the list
     println("------------------------------- Filter Technology Company List Filter Predicate ---------------------------")
-    printListUsingForEachLoop(technologyCompanyList as MutableList<Company>)
+    printListUsingForEachLoop(technologyCompanyList.toMutableList())
 
     // Q2. Filter List of Companies, which started after 1994 (i.e >1994)
     // Add the filtered data to New List
     val companyAfter1994List = companyList.filter { company ->
-        company.startYear > 1994
+        if (company.startYear != null)
+            company.startYear > 1994
+        else
+            false
     }
 
     // print the list
     println("------------------------------- Filter Company List After 1994 Using Filter Predicate ---------------------------")
-    printListUsingForEachLoop(companyAfter1994List as MutableList<Company>)
+    printListUsingForEachLoop(companyAfter1994List.toMutableList())
 }
+
+fun sortUsingSortPredicate(companyList: MutableList<Company>) {
+    // 1. Sort the Companies by their Type
+    val sortedCompanyListByType = companyList.sortedBy {
+        it.type
+    }
+    println("------------------------------- Sort By Company Type ---------------------------")
+    printListUsingForEachLoop((sortedCompanyListByType.toMutableList()))
+
+    // 2. Sort the Companies by their End year
+    val sortedCompanyListByEndYear = companyList.sortedBy {
+        it.endYear
+    }
+    println("------------------------------- Sort By Company End year ---------------------------")
+    printListUsingForEachLoop(sortedCompanyListByEndYear.toMutableList())
+}
+
