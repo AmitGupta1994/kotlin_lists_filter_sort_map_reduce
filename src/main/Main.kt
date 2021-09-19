@@ -194,7 +194,6 @@ fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
 
         }
     }
-
     println("------------------------------- total years for all companies i.e sum of age of all companies ---------------------------")
     println(sum)
 }
