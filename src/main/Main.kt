@@ -113,7 +113,7 @@ fun filterUsingLoop(companyList: MutableList<Company>) {
     println("------------------------------- Filter Technology Company List Using Loop ---------------------------")
     printListUsingForEachLoop(technologyCompanyList.toMutableList())
 
-    // Q2. Filter List of Companies, which started after 1994 (i.e >1994)
+    // Q2. Get the List of Companies, which started after 1994 (i.e >1994)
     val companyAfter1994List = mutableListOf<Company>()
 
     // Add the filtered data to New List
@@ -134,10 +134,10 @@ fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
         company.type == "Technology"
     }
     // print the list
-    println("------------------------------- Filter Technology Company List Filter Predicate ---------------------------")
+    println("------------------------------- FGet the List of Technology Companies. ---------------------------")
     printListUsingForEachLoop(technologyCompanyList.toMutableList())
 
-    // Q2. Filter List of Companies, which started after 1994 (i.e >1994)
+    // Q2. Get the List of Companies, which started after 1994 (i.e >1994)
     // Add the filtered data to New List
     val companyAfter1994List = companyList.filter { company ->
         if (company.startYear != null)
@@ -147,23 +147,24 @@ fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
     }
 
     // print the list
-    println("------------------------------- Filter Company List After 1994 Using Filter Predicate ---------------------------")
+    println("------------------------------- Get the List of Companies, which started after 1994 (i.e >1994)---------------------------")
     printListUsingForEachLoop(companyAfter1994List.toMutableList())
 }
 
 fun sortUsingSortPredicate(companyList: MutableList<Company>) {
-    // 1. Sort the Companies by their Type
+
+    // Q3. Get  the List of Companies by their Type in Ascending Order.
     val sortedCompanyListByType = companyList.sortedBy {
         it.type
     }
-    println("------------------------------- Sort By Company Type ---------------------------")
+    println("------------------------------- Get  the List of Companies by their Type in Ascending Order. ---------------------------")
     printListUsingForEachLoop((sortedCompanyListByType.toMutableList()))
 
-    // 2. Sort the Companies by their End year
+    // Q4. Get the List of Companies by their End year in Descending Order
     val sortedCompanyListByEndYear = companyList.sortedByDescending {
         it.endYear
     }
-    println("------------------------------- Sort By Company End year ---------------------------")
+    println("------------------------------- Get the List of Companies by their End year in Descending Order ---------------------------")
     printListUsingForEachLoop(sortedCompanyListByEndYear.toMutableList())
 }
 
