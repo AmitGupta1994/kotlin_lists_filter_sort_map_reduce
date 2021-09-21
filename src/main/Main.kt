@@ -123,7 +123,7 @@ fun filterUsingLoop(companyList: MutableList<Company>) {
 
     // Add the filtered data to New List
     companyList.forEach { company ->
-        if (company.startYear != null && company.startYear > 1994)
+        if (company.startYear > 1994)
             companyAfter1994List.add(company)
     }
 
@@ -149,10 +149,7 @@ fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
      */
     // Add the filtered data to New List
     val companyAfter1994List = companyList.filter { company ->
-        if (company.startYear != null)
-            company.startYear > 1994
-        else
-            false
+        company.startYear > 1994
     }
 
     // print the list
@@ -224,7 +221,7 @@ fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
     /**
      * Q8. Get the total years for all companies i.e sum of age of all companies
      */
-    val sum = companyList.sumBy {
+    val sumOfAge = companyList.sumBy {
         if (it.endYear == null) {
             2021 - it.startYear
         } else {
@@ -233,5 +230,18 @@ fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
         }
     }
     println("------------------------------- Get the total years for all companies i.e sum of age of all companies ---------------------------")
-    println(sum)
+    println(sumOfAge)
+
+    /**
+     * Q9. Get the sum of Start  Year for all companies.
+     */
+    val sumOfStartYear = companyList.map {
+        it.startYear
+    }.reduce { acc, i ->
+        acc + i
+    }
+
+    println("------------------------------- Get the sum of Start  Year for all companies. ---------------------------")
+    println(sumOfStartYear)
+
 }
