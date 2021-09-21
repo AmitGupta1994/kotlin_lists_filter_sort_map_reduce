@@ -62,7 +62,7 @@ fun main(args: Array<String>) {
 
     /**
      * Map:
-     *  - Create a new List from original list based on a criteria
+     *  - Creates a new List with required Attributes from original list based on a criteria
      */
     mapUsingMapPredicate(companyList)
 
@@ -100,7 +100,10 @@ fun printListUsingForEachLoop(list: MutableList<Any>) {
 }
 
 fun filterUsingLoop(companyList: MutableList<Company>) {
-    // Q1. Get the List of Technology Companies.
+
+    /**
+     * Q1. Get the List of Technology Companies.
+     */
     val technologyCompanyList = mutableListOf<Company>()
 
     // Add the filtered data to New List
@@ -110,10 +113,12 @@ fun filterUsingLoop(companyList: MutableList<Company>) {
     }
 
     // print the list
-    println("------------------------------- Filter Technology Company List Using Loop ---------------------------")
+    println("------------------------------- Get the List of Technology Companies. ---------------------------")
     printListUsingForEachLoop(technologyCompanyList.toMutableList())
 
-    // Q2. Get the List of Companies, which started after 1994 (i.e >1994)
+    /**
+     * Q2. Get the List of Companies, which started after 1994 (i.e >1994)
+     */
     val companyAfter1994List = mutableListOf<Company>()
 
     // Add the filtered data to New List
@@ -123,21 +128,25 @@ fun filterUsingLoop(companyList: MutableList<Company>) {
     }
 
     // print the list
-    println("------------------------------- Filter Company List After 1994 Using Loop ---------------------------")
+    println("------------------------------- Get the List of Companies, which started after 1994 (i.e >1994) ---------------------------")
     printListUsingForEachLoop(companyAfter1994List.toMutableList())
 
 }
 
 fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
-    // Q1. Get the List of Technology Companies.
+    /**
+     * Q1. Get the List of Technology Companies.
+     */
     val technologyCompanyList = companyList.filter { company ->
         company.type == "Technology"
     }
     // print the list
-    println("------------------------------- FGet the List of Technology Companies. ---------------------------")
+    println("------------------------------- Get the List of Technology Companies. ---------------------------")
     printListUsingForEachLoop(technologyCompanyList.toMutableList())
 
-    // Q2. Get the List of Companies, which started after 1994 (i.e >1994)
+    /**
+     * Q2. Get the List of Companies, which started after 1994 (i.e >1994)
+     */
     // Add the filtered data to New List
     val companyAfter1994List = companyList.filter { company ->
         if (company.startYear != null)
@@ -153,14 +162,18 @@ fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
 
 fun sortUsingSortPredicate(companyList: MutableList<Company>) {
 
-    // Q3. Get  the List of Companies by their Type in Ascending Order.
+    /**
+     * Q3. Get  the List of Companies by their Type in Ascending Order.
+     */
     val sortedCompanyListByType = companyList.sortedBy {
         it.type
     }
     println("------------------------------- Get  the List of Companies by their Type in Ascending Order. ---------------------------")
     printListUsingForEachLoop((sortedCompanyListByType.toMutableList()))
 
-    // Q4. Get the List of Companies by their End year in Descending Order
+    /**
+     * Q4. Get the List of Companies by their End year in Descending Order
+     */
     val sortedCompanyListByEndYear = companyList.sortedByDescending {
         it.endYear
     }
@@ -209,7 +222,7 @@ fun mapUsingMapPredicate(companyList: MutableList<Company>) {
 
 fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
     /**
-     * Q8.Get the total years for all companies i.e sum of age of all companies
+     * Q8. Get the total years for all companies i.e sum of age of all companies
      */
     val sum = companyList.sumBy {
         if (it.endYear == null) {
