@@ -208,7 +208,9 @@ fun mapUsingMapPredicate(companyList: MutableList<Company>) {
 }
 
 fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
-    //1. total years for all companies i.e sum of age of all companies
+    /**
+     * Q8.Get the total years for all companies i.e sum of age of all companies
+     */
     val sum = companyList.sumBy {
         if (it.endYear == null) {
             2021 - it.startYear
@@ -217,6 +219,6 @@ fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
 
         }
     }
-    println("------------------------------- total years for all companies i.e sum of age of all companies ---------------------------")
+    println("------------------------------- Get the total years for all companies i.e sum of age of all companies ---------------------------")
     println(sum)
 }
