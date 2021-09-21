@@ -1,10 +1,11 @@
 package main
 
+import main.Company
 
 lateinit var companyList: MutableList<Company>
 
 fun main(args: Array<String>) {
-    println("Filter Sort Map Reduce in Kotlin")
+    println("Use of Higher Orders Functions Like Filter Sort Map and Reduce in Kotlin to Manipulate List")
 
     companyList = mutableListOf()
 
@@ -19,11 +20,14 @@ fun main(args: Array<String>) {
     companyList.add(Company("C9", "Auto", startYear = 1985, endYear = 2008))
     companyList.add(Company("C10", "Hotel", startYear = 1989, endYear = 2004))
 
+    /**
+     * Use of Two Different Approaches to Print List
+     */
     // print Company List using For Loop
     println("------------------------------- printListUsingForLoop ---------------------------")
     printListUsingForLoop(companyList.toMutableList())
 
-    // print Company List using For Each Loop
+    // print Company List using ForEach Loop
     println("------------------------------- printListUsingForEachLoop ---------------------------")
     printListUsingForEachLoop(companyList.toMutableList())
 
@@ -145,7 +149,7 @@ fun sortUsingSortPredicate(companyList: MutableList<Company>) {
     printListUsingForEachLoop((sortedCompanyListByType.toMutableList()))
 
     // 2. Sort the Companies by their End year
-    val sortedCompanyListByEndYear = companyList.sortedBy {
+    val sortedCompanyListByEndYear = companyList.sortedByDescending {
         it.endYear
     }
     println("------------------------------- Sort By Company End year ---------------------------")
