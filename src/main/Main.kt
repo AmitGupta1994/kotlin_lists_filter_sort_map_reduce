@@ -169,14 +169,19 @@ fun sortUsingSortPredicate(companyList: MutableList<Company>) {
 }
 
 fun mapUsingMapPredicate(companyList: MutableList<Company>) {
-    // Get a list with only the name of Company.
+
+    /**
+     * Q5. Get the List with only the name of the Company
+     */
     val companyNameList: List<String> = companyList.map {
         it.name
     }
-    println("------------------------------- List of Company With Only its Name ---------------------------")
+    println("------------------------------- Get the List with only the name of the Company ---------------------------")
     printListUsingForEachLoop(companyNameList.toMutableList())
 
-    // Get a list with only the name  and age of Company.
+    /**
+     * Q6. Get a list with only the name and age of the Company
+     */
     val companyNameAndAgeList: List<String> = companyList.map {
         if (it.endYear == null) {
             var age = 2021 - it.startYear
@@ -188,14 +193,16 @@ fun mapUsingMapPredicate(companyList: MutableList<Company>) {
 
 
     }
-    println("------------------------------- List of Company With its Name and Age ---------------------------")
+    println("------------------------------- Get a list with only the name and age of the Company ---------------------------")
     printListUsingForEachLoop(companyNameAndAgeList.toMutableList())
 
-    // Print the data in following format : Company Name -> [startDate - endDate]
+    /**
+     *Q7. Print the data in following format : Company Name -> [startDate - endDate]
+     */
     val companyNameWithDatesList: List<String> = companyList.map {
         "${it.name} -> [${it.startYear} - ${it.endYear}]"
     }
-    println("------------------------------- Company Name -> [startDate - endDate] ---------------------------")
+    println("------------------------------- Print the data in following format : Company Name -> [startDate - endDate]  ---------------------------")
     printListUsingForEachLoop(companyNameWithDatesList.toMutableList())
 
 }
