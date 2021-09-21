@@ -44,7 +44,7 @@ fun main(args: Array<String>) {
 
     /**
      * Filter :
-     *  - GIVES a list of data based on a criteria
+     *  - Filter is used when we want to GET a list of data based on certain criteria.
      *  - the size of filteredList may or may not be equal to the original list.
      */
     // Filter Using Loop
@@ -55,22 +55,27 @@ fun main(args: Array<String>) {
 
     /**
      * Sort :
-     *  - ORDERS the data based on a criteria
+     *  - Sort is used when we want to ORDER a list of data based on certain criteria.
      *  - the size of sortedList is always equal to original list
      */
     sortUsingSortPredicate(companyList)
 
     /**
      * Map:
-     *  - Creates a new List with required Attributes from original list based on a criteria
+     *  - Map is used when we want to get a list with ONLY REQUIRED ATTRIBUTES FROM THE ORIGINAL LIST .
      */
     mapUsingMapPredicate(companyList)
 
     /**
      * Reduce :
-     *  -
+     *  - Reduce is used when we want to AGGREGATE / ACCUMULATE the given list to single value output result.
      */
     reduceUsingReducePredicate(companyList)
+
+    /**
+     * Combination of Filter,Sort,Map,Reduce
+     */
+    combinationOfFilterSortMapReduce(companyList)
 }
 
 fun printListUsingForLoop(list: MutableList<Any>) {
@@ -113,7 +118,7 @@ fun filterUsingLoop(companyList: MutableList<Company>) {
     }
 
     // print the list
-    println("------------------------------- Get the List of Technology Companies. ---------------------------")
+    println("------------------------------- Q1. Get the List of Technology Companies. ---------------------------")
     printListUsingForEachLoop(technologyCompanyList.toMutableList())
 
     /**
@@ -128,7 +133,7 @@ fun filterUsingLoop(companyList: MutableList<Company>) {
     }
 
     // print the list
-    println("------------------------------- Get the List of Companies, which started after 1994 (i.e >1994) ---------------------------")
+    println("------------------------------- Q2. Get the List of Companies, which started after 1994 (i.e >1994) ---------------------------")
     printListUsingForEachLoop(companyAfter1994List.toMutableList())
 
 }
@@ -141,7 +146,7 @@ fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
         company.type == "Technology"
     }
     // print the list
-    println("------------------------------- Get the List of Technology Companies. ---------------------------")
+    println("------------------------------- Q1. Get the List of Technology Companies. ---------------------------")
     printListUsingForEachLoop(technologyCompanyList.toMutableList())
 
     /**
@@ -153,7 +158,7 @@ fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
     }
 
     // print the list
-    println("------------------------------- Get the List of Companies, which started after 1994 (i.e >1994)---------------------------")
+    println("------------------------------- Q2. Get the List of Companies, which started after 1994 (i.e >1994)---------------------------")
     printListUsingForEachLoop(companyAfter1994List.toMutableList())
 }
 
@@ -165,7 +170,7 @@ fun sortUsingSortPredicate(companyList: MutableList<Company>) {
     val sortedCompanyListByType = companyList.sortedBy {
         it.type
     }
-    println("------------------------------- Get  the List of Companies by their Type in Ascending Order. ---------------------------")
+    println("------------------------------- Q3. Get  the List of Companies by their Type in Ascending Order. ---------------------------")
     printListUsingForEachLoop((sortedCompanyListByType.toMutableList()))
 
     /**
@@ -174,7 +179,7 @@ fun sortUsingSortPredicate(companyList: MutableList<Company>) {
     val sortedCompanyListByEndYear = companyList.sortedByDescending {
         it.endYear
     }
-    println("------------------------------- Get the List of Companies by their End year in Descending Order ---------------------------")
+    println("------------------------------- Q4. Get the List of Companies by their End year in Descending Order ---------------------------")
     printListUsingForEachLoop(sortedCompanyListByEndYear.toMutableList())
 }
 
@@ -186,7 +191,7 @@ fun mapUsingMapPredicate(companyList: MutableList<Company>) {
     val companyNameList: List<String> = companyList.map {
         it.name
     }
-    println("------------------------------- Get the List with only the name of the Company ---------------------------")
+    println("------------------------------- Q5. Get the List with only the name of the Company ---------------------------")
     printListUsingForEachLoop(companyNameList.toMutableList())
 
     /**
@@ -203,7 +208,7 @@ fun mapUsingMapPredicate(companyList: MutableList<Company>) {
 
 
     }
-    println("------------------------------- Get a list with only the name and age of the Company ---------------------------")
+    println("------------------------------- Q6. Get a list with only the name and age of the Company ---------------------------")
     printListUsingForEachLoop(companyNameAndAgeList.toMutableList())
 
     /**
@@ -212,7 +217,7 @@ fun mapUsingMapPredicate(companyList: MutableList<Company>) {
     val companyNameWithDatesList: List<String> = companyList.map {
         "${it.name} -> [${it.startYear} - ${it.endYear}]"
     }
-    println("------------------------------- Print the data in following format : Company Name -> [startDate - endDate]  ---------------------------")
+    println("------------------------------- Q7. Print the data in following format : Company Name -> [startDate - endDate]  ---------------------------")
     printListUsingForEachLoop(companyNameWithDatesList.toMutableList())
 
 }
@@ -229,7 +234,7 @@ fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
 
         }
     }
-    println("------------------------------- Get the total years for all companies i.e sum of age of all companies ---------------------------")
+    println("------------------------------- Q8. Get the total years for all companies i.e sum of age of all companies ---------------------------")
     println(sumOfAge)
 
     /**
@@ -241,7 +246,36 @@ fun reduceUsingReducePredicate(companyList: MutableList<Company>) {
         acc + i
     }
 
-    println("------------------------------- Get the sum of Start  Year for all companies. ---------------------------")
+    println("------------------------------- Q9. Get the sum of Start  Year for all companies. ---------------------------")
     println(sumOfStartYear)
+
+}
+
+fun combinationOfFilterSortMapReduce(companyList: MutableList<Company>) {
+    /**
+     * Q10. Get the list of companies after 1994 sorted by start year
+     */
+
+    val companyListAfter1994SortedByStartYear = companyList.filter {
+        it.startYear > 1994
+    }.sortedBy {
+        it.startYear
+    }
+    println("------------------------------- Q10. Get the list of companies after 1994 sorted by start year ---------------------------")
+    printListUsingForEachLoop(companyListAfter1994SortedByStartYear.toMutableList())
+
+    /**
+     * Q11. Get the sum of start year of companies started after 1994
+     */
+    val sumOfCompanyStartYearAfer1994: Int = companyList.filter {
+        it.startYear > 1994
+    }.map {
+        it.startYear
+    }.reduce { acc, i ->
+        acc + i
+    }
+
+    println("------------------------------- Q11. Get the sum of start year of companies started after 1994 ---------------------------")
+    println(sumOfCompanyStartYearAfer1994)
 
 }
