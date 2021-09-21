@@ -4,6 +4,17 @@ import main.Company
 
 lateinit var companyList: MutableList<Company>
 
+/**
+ * QUESTIONS
+ *  1. Get the List of Technology Companies.
+ *  2. Get the List of Companies, which started after 1994 (i.e >1994)
+ *  3. Get  the List of Companies by their Type in Ascending Order.
+ *  4. Get the List of Companies by their End year in Descending Order
+ *  5. Get the List with only the name of the Company
+ *  6. Get a list with only the name and age of the Company.
+ *  7. Print the data in following format : Company Name -> [startDate - endDate]
+ *  8. Get the total years for all companies i.e sum of age of all companies
+ */
 fun main(args: Array<String>) {
     println("Use of Higher Orders Functions Like Filter Sort Map and Reduce in Kotlin to Manipulate List")
 
@@ -33,7 +44,7 @@ fun main(args: Array<String>) {
 
     /**
      * Filter :
-     *  - gives a list of data based on a criteria
+     *  - GIVES a list of data based on a criteria
      *  - the size of filteredList may or may not be equal to the original list.
      */
     // Filter Using Loop
@@ -44,7 +55,7 @@ fun main(args: Array<String>) {
 
     /**
      * Sort :
-     *  - orders the data based on a criteria
+     *  - ORDERS the data based on a criteria
      *  - the size of sortedList is always equal to original list
      */
     sortUsingSortPredicate(companyList)
@@ -89,7 +100,7 @@ fun printListUsingForEachLoop(list: MutableList<Any>) {
 }
 
 fun filterUsingLoop(companyList: MutableList<Company>) {
-    // Q1. Filter List of Technology Companies
+    // Q1. Get the List of Technology Companies.
     val technologyCompanyList = mutableListOf<Company>()
 
     // Add the filtered data to New List
@@ -118,7 +129,7 @@ fun filterUsingLoop(companyList: MutableList<Company>) {
 }
 
 fun filterUsingFilterPredicate(companyList: MutableList<Company>) {
-    // Q1. Filter List of Technology Companies
+    // Q1. Get the List of Technology Companies.
     val technologyCompanyList = companyList.filter { company ->
         company.type == "Technology"
     }
